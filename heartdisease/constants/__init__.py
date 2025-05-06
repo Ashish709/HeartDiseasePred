@@ -2,6 +2,9 @@ import os
 from datetime import datetime
 
 
+"""
+defining common constant variable for training pipeline
+"""
 
 def get_current_time_stamp():
     return f"{datetime.now().strftime('%Y-%m-%d-%H-%M-%S')}"
@@ -18,6 +21,24 @@ CONFIG_FILE_PATH = os.path.join(ROOT_DIR,CONFIG_DIR,CONFIG_FILE_NAME)
 
 CURRENT_TIME_STAMP = get_current_time_stamp()
 
+
+## Common variables
+TARGET_COLUMN = "target"
+PIPELINE_NAME: str = "HeartDiseasePrediction"
+ARTIFACT_DIR_NAME: str = "Artifacts"
+
+
+FILE_NAME: str = "heart.csv"
+
+TRAIN_FILE_NAME: str = "train.csv"
+TEST_FILE_NAME: str = "test.csv"
+
+SCHEMA_FILE_PATH = os.path.join("data_schema", "schema.yaml")
+
+SAVED_MODEL_DIR =os.path.join("saved_models")
+MODEL_FILE_NAME = "model.pkl"
+
+
 ## LOG Related variables
 LOG_DIR="logs"
 LOG_FILE_NAME = get_log_file_name()
@@ -29,16 +50,18 @@ TRAINING_PIPELINE_CONFIG_KEY = 'training_pipeline_config'
 TRAINING_PIPELINE_ARTIFACT_DIR_KEY = 'artifact_dir'
 TRAINING_PIPELINE_NAME_KEY = 'pipeline_name'
 
+FILE_PATH = "Data\heart.csv"
 
 ## Data Ingestion ralated variables
 DATA_INGESTION_ARTIFACT_DIR = 'data_ingetsion'
-DATA_INGESTION_CONFIG_KEY = 'data_ingestion_config'
-DATA_INGESTION_DOWNLOAD_URL_KEY = 'dataset_download_url'
+# DATA_INGESTION_CONFIG_KEY = 'data_ingestion_config'
+# DATA_INGESTION_INPUT_FILE_PATH = 'dataset_download_url'
 DATA_INGESTION_RAW_DATA_DIR_KEY = 'raw_data_dir'
-DATA_INGESTION_TGZ_DOWNLOAD_DIR_KEY = 'tgz_download_dir'
+#DATA_INGESTION_TGZ_DOWNLOAD_DIR_KEY = 'tgz_download_dir'
 DATA_INGESTION_INGESTED_DIR_NAME_KEY = 'ingested_dir'
-DATA_INGESTION_TRAIN_DIR_KEY = 'ingested_train_dir'
-DATA_INGESTION_TEST_DIR_KEY = 'ingested_test_dir'
+# DATA_INGESTION_TRAIN_DIR_KEY = 'ingested_train_dir'
+# DATA_INGESTION_TEST_DIR_KEY = 'ingested_test_dir'
+DATA_INGESTION_TRAIN_TEST_SPLIT_RATIO = 0.2
 
 
 ## Data Validation related Varialbels
