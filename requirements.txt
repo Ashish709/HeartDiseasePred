@@ -13,6 +13,6 @@ uvicorn
 python-multipart
 setuptools
 dill
-
+seaborn
 
 ##-e .

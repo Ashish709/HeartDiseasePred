@@ -52,4 +52,67 @@ class DataIngestionConfig:
         ## Train Test Split Ratio
         self.train_test_split_ratio:float = constants.DATA_INGESTION_TRAIN_TEST_SPLIT_RATIO
         
+
+
+
+class DataValidationConfig:
+    def __init__(self,training_pipeline_config:TrainingPipelineConfig):
+        
+        
+        ## Data Validation Dir
+        self.data_validation_dir = os.path.join(
+            training_pipeline_config.artifact_name,
+            constants.DATA_VALIDATION_DIR_NAME
+        )
+        
+        ## Valid Data Dir
+        self.valid_data_dir = os.path.join(
+            self.data_validation_dir,
+            constants.DATA_VALIDATION_VALID_DIR
+        )
+        
+        ## Invalid Data Dir
+        self.invalid_data_dir = os.path.join(
+            self.data_validation_dir,
+            constants.DATA_VALIDATION_INVALID_DIR  
+        )     
+        
+        
+        ## valid train file path
+        self.valid_train_file_path = os.path.join(
+            self.valid_data_dir,
+            constants.TRAIN_FILE_NAME
+        )
+        
+        ## validt test file path
+        self.valid_test_file_path = os.path.join(
+            self.valid_data_dir,
+            constants.TEST_FILE_NAME
+        )
+        
+        
+        ## invalid train file path
+        self.invalid_train_file_path  = os.path.join(
+            self.invalid_data_dir,
+            constants.TRAIN_FILE_NAME
+        )
+        
+        ## invalid test file path
+        self.invalid_test_file_path = os.path.join(
+            self.invalid_data_dir,
+            constants.TEST_FILE_NAME
+        )
+        
+        
+        ## Drift Report Path
+        self.drift_report_file_path = os.path.join(
+            self.data_validation_dir,
+            constants.DATA_VALIDATION_DRIFT_REPORT_DIR
+        )
+        
+        ## Dirft Report Name
+        self.data_drift_file_name = os.path.join(
+            self.drift_report_file_path,
+            constants.DATA_VALIDATION_DRIFT_REPORT_FILE_NAME
+        )
         
