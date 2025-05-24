@@ -1,4 +1,4 @@
-# columns:
+columns:
 - age: int64
 - sex:         int64
 - cp:          int64

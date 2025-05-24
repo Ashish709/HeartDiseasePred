@@ -31,7 +31,7 @@ class DataValidation:
     
     def validate_number_of_columns(self, dataframe:pd.DataFrame)->bool:
         try:
-            numbner_of_columns = len(self.schema_config)
+            numbner_of_columns = len(self.schema_config['columns'])
             logging.info(f"Required Number of Columns {numbner_of_columns}")
             logging.info(f"Data Frame has colums: {len(dataframe.columns)}")
             
@@ -128,8 +128,10 @@ class DataValidation:
                 valid_test_file_path=self.data_validation_config.valid_test_file_path,
                 invalid_train_file_path=self.data_validation_config.invalid_train_file_path,
                 invalid_test_file_path=self.data_validation_config.invalid_test_file_path,
-                drift_report_filee_path=self.data_validation_config.drift_report_file_path
+                drift_report_file_path=self.data_validation_config.drift_report_file_path
             )
+            
+            return data_validation_artifact
         
         except Exception as e:
             raise CustomException(e,sys)

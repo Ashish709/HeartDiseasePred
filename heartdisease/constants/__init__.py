@@ -1,6 +1,6 @@
 import os
 from datetime import datetime
-
+import numpy as np
 
 """
 defining common constant variable for training pipeline
@@ -70,30 +70,29 @@ DATA_VALIDATION_VALID_DIR: str = "validated"
 DATA_VALIDATION_INVALID_DIR: str = "invalid"
 DATA_VALIDATION_DRIFT_REPORT_DIR: str = "drift_report"
 DATA_VALIDATION_DRIFT_REPORT_FILE_NAME:str = "report.yaml"
+
+
+
+
+"""
+Data Transformation related constant start with DATA_TRANSFORMATION VAR NAME
+"""
+DATA_TRANSFORMATION_DIR_NAME: str = "data_transformation"
+DATA_TRANSFORMATION_TRANSFORMED_DATA_DIR: str = "transformed"
+DATA_TRANSFORMATION_TRANSFORMED_OBJECT_DIR: str = "transformed_object"
 PREPROCESSING_OBJECT_FILE_NAME = "preprocessing.pkl"
 
+## kkn imputer to replace nan values
+DATA_TRANSFORMATION_IMPUTER_PARAMS: dict = {
+    "missing_values": np.nan,
+    "n_neighbors": 3,
+    "weights": "uniform",
+}
+DATA_TRANSFORMATION_TRAIN_FILE_PATH: str = "train.npy"
+
+DATA_TRANSFORMATION_TEST_FILE_PATH: str = "test.npy"
 
 
-## Data Transformer ralated Variables
-DATA_TRANSFORMATION_ARTIFACT_DIR = 'data_transformation'
-DATA_TRANSFORMATION_CONFIG_KEY = 'data_transformation_config'
-DATA_TRANSFORMATION_ADD_BEDROOM_PER_ROOM_KEY = 'add_bedroom_per_room'
-DATA_TRANSFORMATION_DIR_NAME_KEY = 'transformed_dir'
-DATA_TRANSFORMATION_TRAIN_DIR_NAME_KEY = 'transformed_train_dir'
-DATA_TRANSFORMATION_TEST_DIR_NAME_KEY = 'transformed_test_dir'
-DATA_TRANSFORMATION_PREPROCESSING_DIR_KEY = 'preprocessing_dir'
-DATA_TRANSFORMATION_PREPROCESSED_FILE_NAME_KEY = 'preprocessed_object_file_name'
-
-COLUMN_TOTAL_ROOMS = "total_rooms"
-COLUMN_POPULATION = "population"
-COLUMN_HOUSEHOLDS = "households"
-COLUMN_TOTAL_BEDROOM = "total_bedrooms"
-DATASET_SCHEMA_COLUMNS_KEY=  "columns"
-
-NUMERICAL_COLUMN_KEY="numerical_columns"
-CATEGORICAL_COLUMN_KEY = "categorical_columns"
-
-TARGET_COLUMN_KEY="target_column"
 
 
 ## Model Trainer Realted variables
