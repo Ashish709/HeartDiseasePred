@@ -8,10 +8,11 @@ class TrainingPipelineConfig:
     def __init__(self):
         timestamp = constants.CURRENT_TIME_STAMP
         self.pipelinename = constants.PIPELINE_NAME
-        self.artifact_name = constants.ARTIFACT_DIR_NAME
-        self.artifact_dir = os.path.join(self.artifact_name,timestamp)
+        self.artifact_dir = constants.ARTIFACT_DIR_NAME
+        self.artifact_name = os.path.join(self.artifact_dir,timestamp)
         self.model_dir = constants.SAVED_MODEL_DIR
         self.timestamp:str = timestamp
+        
         
     
 class DataIngestionConfig:
@@ -23,7 +24,7 @@ class DataIngestionConfig:
         
         ## RAW Directory
         self.data_ingestion_dir:str = os.path.join(
-            training_pipeline_config.artifact_name, 
+            training_pipeline_config.artifact_name,
             constants.DATA_INGESTION_ARTIFACT_DIR
         ) 
         
@@ -147,3 +148,25 @@ class DataTransformationConfig:
             constants.DATA_TRANSFORMATION_TRANSFORMED_OBJECT_DIR,
             constants.PREPROCESSING_OBJECT_FILE_NAME
         )
+        
+
+
+class ModelTrainerConfig:
+    def __init__(self, training_pipeline_config:TrainingPipelineConfig):
+        
+        self.model_trainer_dir:str = os.path.join(
+            training_pipeline_config.artifact_name,
+            constants.MODEL_TRAINER_DIR_NAME 
+        )
+        
+        self.trained_model_file_path = os.path.join(
+            self.model_trainer_dir,
+            constants.MODEL_FILE_NAME
+        )
+        
+        self.expected_accuracy:float = constants.MODEL_TRAINER_EXPECTED_SCORE
+        self.overfitting_underfitting_threshold = constants.MODEL_TRAINER_OVER_FIITING_UNDER_FITTING_THRESHOLD
+        
+        
+        
+        
